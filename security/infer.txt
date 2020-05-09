@@ -1,0 +1,249 @@
+Found 30 issues
+
+escape.c:73: error: UNINITIALIZED_VALUE
+  The value read from special[_] was never initialized.
+  71.       memset(_needs_escape, ~0, sizeof(_needs_escape));
+  72.       for(i = 0; i < sizeof(special) - 1; ++i) {
+  73. >         j=special[i];
+  74.           if (j>=NEEDS_ESCAPE_BITS) {
+  75.               /* warning: character $j will be needlessly escaped. */
+
+sublog.c:92: error: RESOURCE_LEAK
+  resource acquired to `return` by call to `socket()` at line 88, column 10 is not released after line 92, column 9.
+  90.           return fd;
+  91.       if (connect(fd, (struct sockaddr *) &sa, sizeof (sa)) < 0)
+  92. >         return -1;
+  93.       return fd;
+  94.   }
+
+util.c:120: error: NULL_DEREFERENCE
+  pointer `t` last assigned on line 102 could be null and is dereferenced at line 120, column 9.
+  118.       *p-- = ' ';
+  119.   
+  120. >     a = t->tm_sec;
+  121.       *p-- = '0' + a % 10;
+  122.       *p-- = '0' + a / 10;
+
+util.c:100: error: NULL_DEREFERENCE
+  pointer `t` last assigned on line 99 could be null and is dereferenced at line 100, column 23.
+  98.       if (use_localtime) {
+  99.           t = localtime(&current_time);
+  100. >         time_offset = TIMEZONE_OFFSET(t);
+  101.       } else {
+  102.           t = gmtime(&current_time);
+
+ip.c:99: error: DEAD_STORE
+  The value written to &p (type int) is never used.
+  97.   int net_port(struct SOCKADDR *s)
+  98.   {
+  99. >     int p = -1;
+  100.   #ifdef INET6
+  101.       char serv[NI_MAXSERV];
+
+mmap_cache.c:117: error: RESOURCE_LEAK
+  resource acquired to `return` by call to `open()` at line 107, column 15 is not released after line 117, column 9.
+  115.           fprintf(stderr, "%s is a directory\n", fname);
+  116.   #endif
+  117. >         return NULL;
+  118.       }
+  119.   
+
+select.c:180: error: DEAD_STORE
+  The value written to &current (type request*) is never used.
+  178.               }
+  179.           }
+  180. >         current = next;
+  181.       }
+  182.   }
+
+index_dir.c:158: error: DEAD_STORE
+  The value written to &the_error (type char*) is never used.
+  156.           break;
+  157.       case 4:
+  158. >         the_error = "There was an error escaping a string.";
+  159.       case 5:
+  160.           the_error = "Too many arguments were passed to the indexer.";
+
+cgi.c:165: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 158 could be null and is dereferenced by call to `memcpy()` at line 165, column 13.
+  163.           }
+  164.           if (prefix_len)
+  165. >             memcpy(p, "HTTP_", 5);
+  166.           req->cgi_env[req->cgi_env_index++] = p;
+  167.           return 1;
+
+util.c:161: error: DEAD_STORE
+  The value written to &monthname (type char*) is never used.
+  159.       switch (*monthname) {
+  160.       case 'A':
+  161. >         return (*++monthname == 'p' ? 3 : 7);
+  162.       case 'D':
+  163.           return (11);
+
+util.c:169: error: DEAD_STORE
+  The value written to &monthname (type char*) is never used.
+  167.           if (*++monthname == 'a')
+  168.               return (0);
+  169. >         return (*++monthname == 'n' ? 5 : 6);
+  170.       case 'M':
+  171.           return (*(monthname + 2) == 'r' ? 2 : 4);
+
+cgi.c:324: error: MEMORY_LEAK
+  memory dynamically allocated by call to `strdup()` at line 320, column 13 is not reachable after line 324, column 25.
+  322.               WARN("unable to strdup 'q' in create_argv!");
+  323.           }
+  324. >         for (aargc = 1; q && (aargc < CGI_ARGC_MAX);) {
+  325.               r = q;
+  326.               /* for an index-style CGI, + is used to seperate arguments
+
+cgi.c:335: error: MEMORY_LEAK
+  memory dynamically allocated by call to `strdup()` at line 320, column 13 is not reachable after line 335, column 17.
+  333.                   q = NULL;
+  334.               }
+  335. >             if (unescape_uri(r, NULL)) {
+  336.                   /* printf("parameter %d: %s\n",aargc,r); */
+  337.                   aargv[aargc++] = r;
+
+util.c:308: error: DEAD_STORE
+  The value written to &uri_old (type char*) is never used.
+  306.           } else if (c == '?') { /* query string */
+  307.               if (query_string)
+  308. >                 *query_string = ++uri_old;
+  309.               /* stop here */
+  310.               *uri = '\0';
+
+util.c:320: error: DEAD_STORE
+  The value written to &uri_old (type char*) is never used.
+  318.                   while((c = *uri_old)) {
+  319.                       if (c == '?') {
+  320. >                         *query_string = ++uri_old;
+  321.                           break;
+  322.                       }
+
+index_dir.c:349: error: MEMORY_LEAK
+  memory dynamically allocated by call to `strdup()` at line 342, column 11 is not reachable after line 349, column 5.
+  347.              "</body>\n</html>\n", now, TIMEZONE(timeptr));
+  348.   #else
+  349. >     printf("</table>\n<hr noshade>\nIndex generated %s UTC\n"
+  350.              "<!-- This program is part of the Boa Webserver Copyright (C) 1991-2002 http://www.boa.org -->\n"
+  351.              "</body>\n</html>\n", now);
+
+index_dir.c:343: error: NULL_DEREFERENCE
+  pointer `now` last assigned on line 342 could be null and is dereferenced by call to `strlen()` at line 343, column 9.
+  341.   #endif
+  342.       now = strdup(asctime(timeptr));
+  343. >     now[strlen(now) - 1] = '\0';
+  344.   #ifdef USE_LOCALTIME
+  345.       printf("</table>\n<hr noshade>\nIndex generated %s %s\n"
+
+util.c:359: error: NULL_DEREFERENCE
+  pointer `t` last assigned on line 350 could be null and is dereferenced at line 359, column 9.
+  357.       memcpy(p--, " GMT", 4);
+  358.   
+  359. >     a = t->tm_sec;
+  360.       *p-- = '0' + a % 10;
+  361.       *p-- = '0' + a / 10;
+
+cgi.c:438: error: MEMORY_LEAK
+  memory dynamically allocated by call to `strdup()` at line 419, column 25 is not reachable after line 438, column 17.
+  436.                   _exit(1);
+  437.               }
+  438. >             if (chdir(foo) != 0) {
+  439.                   log_error_time();
+  440.                   perror("chdir");
+
+cgi.c:407: error: UNINITIALIZED_VALUE
+  The value read from pipes[_] was never initialized.
+  405.   
+  406.           if (use_pipes) {
+  407. >             close(pipes[0]);
+  408.               close(pipes[1]);
+  409.           }
+
+cgi.c:408: error: UNINITIALIZED_VALUE
+  The value read from pipes[_] was never initialized.
+  406.           if (use_pipes) {
+  407.               close(pipes[0]);
+  408. >             close(pipes[1]);
+  409.           }
+  410.           send_r_error(req);
+
+cgi.c:435: error: UNINITIALIZED_VALUE
+  The value read from pipes[_] was never initialized.
+  433.                   perror("chdir");
+  434.                   if (use_pipes)
+  435. >                     close(pipes[1]);
+  436.                   _exit(1);
+  437.               }
+
+cgi.c:442: error: UNINITIALIZED_VALUE
+  The value read from pipes[_] was never initialized.
+  440.                   perror("chdir");
+  441.                   if (use_pipes)
+  442. >                     close(pipes[1]);
+  443.                   _exit(1);
+  444.               }
+
+cgi.c:447: error: UNINITIALIZED_VALUE
+  The value read from pipes[_] was never initialized.
+  445.           }
+  446.           if (use_pipes) {
+  447. >             close(pipes[0]);
+  448.               /* tie cgi's STDOUT to it's write end of pipe */
+  449.               if (dup2(pipes[1], STDOUT_FILENO) == -1) {
+
+cgi.c:449: error: UNINITIALIZED_VALUE
+  The value read from pipes[_] was never initialized.
+  447.               close(pipes[0]);
+  448.               /* tie cgi's STDOUT to it's write end of pipe */
+  449. >             if (dup2(pipes[1], STDOUT_FILENO) == -1) {
+  450.                   log_error_time();
+  451.                   perror("dup2 - pipes");
+
+cgi.c:452: error: UNINITIALIZED_VALUE
+  The value read from pipes[_] was never initialized.
+  450.                   log_error_time();
+  451.                   perror("dup2 - pipes");
+  452. >                 close(pipes[1]);
+  453.                   _exit(1);
+  454.               }
+
+cgi.c:455: error: UNINITIALIZED_VALUE
+  The value read from pipes[_] was never initialized.
+  453.                   _exit(1);
+  454.               }
+  455. >             close(pipes[1]);
+  456.               if (set_block_fd(STDOUT_FILENO) == -1) {
+  457.                   log_error_time();
+
+cgi.c:534: error: UNINITIALIZED_VALUE
+  The value read from pipes[_] was never initialized.
+  532.               return 0;
+  533.   
+  534. >         close(pipes[1]);
+  535.           req->data_fd = pipes[0];
+  536.   
+
+cgi.c:535: error: UNINITIALIZED_VALUE
+  The value read from pipes[_] was never initialized.
+  533.   
+  534.           close(pipes[1]);
+  535. >         req->data_fd = pipes[0];
+  536.   
+  537.           req->status = PIPE_READ;
+
+y.tab.c:1010: error: DEAD_STORE
+  The value written to &yymsg (type char const *) is never used.
+  1008.     YYUSE (yyvaluep);
+  1009.     if (!yymsg)
+  1010. >     yymsg = "Deleting";
+  1011.     YY_SYMBOL_PRINT (yymsg, yytype, yyvaluep, yylocationp);
+  1012.   
+
+Summary of the reports
+
+  UNINITIALIZED_VALUE: 11
+           DEAD_STORE: 8
+     NULL_DEREFERENCE: 5
+          MEMORY_LEAK: 4
+        RESOURCE_LEAK: 2
