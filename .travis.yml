@@ -44,6 +44,7 @@ jobs:
         - cd src
         - ./configure
         - infer -- make
+        - cat infer-out/bugs.txt
       addons:
         apt:
           update: true
