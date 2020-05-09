@@ -29,6 +29,6 @@ addons:
       version: 0.94.13
       description: "The last stable version of the Boa webserver, with some security checks and integrations."
     notification_email: chris+shrug@partridge.tech
-    build_command_prepend: ./configure
-    build_command: make
-    branch_pattern: master
+    build_command_prepend: ./src/configure
+    build_command: make -C src
+    branch_pattern: coverity_scan
