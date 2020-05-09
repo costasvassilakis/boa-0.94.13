@@ -43,7 +43,7 @@ jobs:
         - sudo ln -s "/opt/infer-linux64-v$VERSION/bin/infer" /usr/local/bin/infer
         - cd src
         - ./configure
-        - infer -- make
+        - infer --progress-bar-style plain --quiet -- make
         - cat infer-out/bugs.txt
       addons:
         apt:
