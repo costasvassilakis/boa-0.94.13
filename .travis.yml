@@ -44,3 +44,8 @@ jobs:
         - cd src
         - ./configure
         - infer -- make
+      addons:
+        apt:
+          update: true
+          packages:
+            - libstdc++6
