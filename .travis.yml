@@ -24,11 +24,22 @@ jobs:
           update: true
           packages:
             - flawfinder
+    - stage: analyze
       name: cppcheck
       os: linux
-      script: cppcheck .
+      script: cppcheck --force .
       addons:
         apt:
           update: true
           packages:
             - cppcheck
+    - stage: analyze
+      name: infer
+      os: linux
+      script:
+        - VERSION=0.17.0
+        - curl -sSL "https://github.com/facebook/infer/releases/download/v$VERSION/infer-linux64-v$VERSION.tar.xz" | sudo tar -C /opt -xJ &&
+        - ln -s "/opt/infer-linux64-v$VERSION/bin/infer" /usr/local/bin/infer
+        - cd src
+        - ./configure
+        - infer -- make
