@@ -7,7 +7,7 @@
 
 ## Changes
 
-This repository contains Boa 0.94.13 with minimal changes as of 2020-05-08. It should not be considered meaningfully enhanced from the original source. However, it does contain some integrations and output from tools to help identify security hotspots and bad practices.
+This repository contains Boa 0.94.13 with minimal changes. It should not be considered meaningfully enhanced from the original source. However, it does contain some integrations and output from tools to help identify security hotspots and bad practices.
 
 ### Code
 
