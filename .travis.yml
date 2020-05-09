@@ -26,7 +26,9 @@ addons:
   coverity_scan:
     project:
       name: "harm-reduction/boa-0.94.13"
+      version: 0.94.13
       description: "The last stable version of the Boa webserver, with some security checks and integrations."
     notification_email: chris+shrug@partridge.tech
-    build_command: "./src/configure && make"
-    branch_pattern: coverity_scan
+    build_command_prepend: ./configure
+    build_command: make
+    branch_pattern: master
