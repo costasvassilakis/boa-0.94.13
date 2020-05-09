@@ -12,3 +12,23 @@ script:
   - cd src
   - ./configure
   - make
+
+jobs:
+  include:
+    - stage: analyze
+      name: flawfinder
+      os: linux
+      script: flawfinder .
+      addons:
+        apt:
+          update: true
+          packages:
+            - flawfinder
+      name: cppcheck
+      os: linux
+      script: cppcheck .
+      addons:
+        apt:
+          update: true
+          packages:
+            - cppcheck

@@ -105,7 +105,8 @@ print "id: ", `id`, "\n<p>\n";
 if ($ENV{"QUERY_STRING"}=~/ident/ && $ENV{"REMOTE_PORT"} ne "") {
 
 # Uses idlookup-1.2 from Peter Eriksson  <pen@lysator.liu.se>
-# ftp://coast.cs.purdue.edu/pub/tools/unix/ident/tools/idlookup-1.2.tar.gz
+# original copy provided by DDG LTH (Lund University), mirrored @ 2020-05-09
+# http://debian.lth.se/pub/security/ident/tools/ -> extras/idlookup-1.2.tar.gz
 # Could use modification to timeout and trap stderr messages
 	$a="idlookup ".
 	   $ENV{"REMOTE_ADDR"}." ".$ENV{"REMOTE_PORT"}." ".$ENV{"SERVER_PORT"};
