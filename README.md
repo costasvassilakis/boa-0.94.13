@@ -1,7 +1,7 @@
 # Boa 0.94.13
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/harm-reduction/boa-0.94.13.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/harm-reduction/boa-0.94.13/alerts/)
-[![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/harm-reduction/boa-0.94.13.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/harm-reduction/boa-0.94.13/context:cpp)
-[![Build Status](https://travis-ci.org/harm-reduction/boa-0.94.13.svg?branch=master)](https://travis-ci.org/harm-reduction/boa-0.94.13)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/shrugly/boa-0.94.13.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/shrugly/boa-0.94.13/alerts/)
+[![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/shrugly/boa-0.94.13.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/shrugly/boa-0.94.13/context:cpp)
+[![Build Status](https://travis-ci.org/shrugly/boa-0.94.13.svg?branch=master)](https://travis-ci.org/shrugly/boa-0.94.13)
 
 [Boa](http://www.boa.org/) is a simple and lightweight HTTP server which is occasionally still found in embedded firmware images for serving CGI scripts, files, and more. 0.94.13 is the last stable version, and was released [in 2002](https://en.wikipedia.org/wiki/Boa_(web_server)).
 
@@ -31,7 +31,7 @@ Summary 2020-05-08: Boa does not conform to modern, secure coding practices - wh
 
 We apply security tools & processes to assist developers in determining if legacy software is the right choice for their application. Where reasonable we will attempt to upgrade the security, reliability, and quality of legacy software.
 
-However, we are not volunteering to be new maintainers for this software. We will not develop new features or substantially change its functionality. Please report bugs that result in security problems to us using the [Issues](https://github.com/harm-reduction/boa-0.94.13/issues) tab and we will look into fixing them. Other bugs, feature requests, usability issues, etc. will be largely ignored or closed without warning.
+However, we are not volunteering to be new maintainers for this software. We will not develop new features or substantially change its functionality. Please report bugs that result in security problems to us using the [Issues](https://github.com/shrugly/boa-0.94.13/issues) tab and we will look into fixing them. Other bugs, feature requests, usability issues, etc. will be largely ignored or closed without warning.
 
 ### Warranty & Liability
 
