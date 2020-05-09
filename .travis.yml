@@ -35,7 +35,7 @@ jobs:
             - cppcheck
     - stage: analyze
       name: infer
-      os: linux
+      dist: bionic
       compiler: clang
       script:
         - VERSION=0.17.0
