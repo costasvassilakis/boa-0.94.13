@@ -2,7 +2,6 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/harm-reduction/boa-0.94.13.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/harm-reduction/boa-0.94.13/alerts/)
 [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/harm-reduction/boa-0.94.13.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/harm-reduction/boa-0.94.13/context:cpp)
 [![Build Status](https://travis-ci.org/harm-reduction/boa-0.94.13.svg?branch=master)](https://travis-ci.org/harm-reduction/boa-0.94.13)
-[![Coverity status](https://scan.coverity.com/projects/21063/badge.svg)](https://scan.coverity.com/projects/harm-reduction-boa-0-94-13)
 
 
 The last stable version of the Boa webserver, with some security checks &amp; integrations. The badges you see are from LGTM's QL-based quality and security checks.

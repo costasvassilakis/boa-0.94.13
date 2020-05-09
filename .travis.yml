@@ -8,27 +8,7 @@ os:
   - linux
   - osx
 
-env:
-  global:
-    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-    #   via the "travis encrypt" command using the project repo's public key
-    - secure: "G1jA8HlungRFA9vtbcG9JUty54GSbu0U6pJkIcnTJ3aoiJcn1zTe2hzAsgJ/w67IYeVKSuUMI3T5SIu8GKnAUUrVwRmKhingbenDWOzyI908cVrd4+ndh/pbyW7/2qBn/HQLVdGgxXhh/20hrJg5+or2KxQTR4miaEEIcEuzh0gYoOr2pAIHphWFQZ2DVCTC1ZKNuUwVaZklMm0G0R7Fjsdu0/vvZxWNfzM2SuPZQp/tePOC5Gj/QpUSnH358XWqswOaAdu8jI5O0PkTMP7xO/WEiF1ZhiHfnLdEYj6266KCg7HyySm5Kbr7Xx3/fuIRE74GUlZKPQF4oB9VMXcYrxNiJXhN5cBFY757ErC+RpLkz9lFL8LGim2+HElTidIUmIFk28u6U10fLhkuY0VG4GB+2K2Tglxnpnh3vPTtOyRI6jHCxnx3ZuwZFv8tBWNl/yYEldyyiKJMDPooWC2Da4Ti32aJMZiMsgSp0zCiR509mjIId2hmrj8HHeCPzphE5WIBpREEZMub5ldS642BeuJEpB+VQ7jcwE5w5BUMSXD8wfEHUgve0N7VhUh1FNrtx/QdlOHsiXf3bkl96g8C4Z4Bb2SBZS9u2DCoqEHUwaxRCr+HE9lpVs4hBolvaBJeFDOyuO6VGD6ALMHG9YEx8Sq4n3m8Vg2ZH4WSk20awdg="
-  
-before_install:
-  - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
-
 script:
   - cd src
   - ./configure
   - make
-
-addons:
-  coverity_scan:
-    project:
-      name: "harm-reduction/boa-0.94.13"
-      version: 0.94.13
-      description: "The last stable version of the Boa webserver, with some security checks and integrations."
-    notification_email: chris+shrug@partridge.tech
-    build_command_prepend: cd src
-    build_command: ./configure && make
-    branch_pattern: coverity_scan
