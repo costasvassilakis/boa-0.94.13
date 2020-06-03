@@ -11,8 +11,8 @@ This repository contains Boa 0.94.13 with minimal changes. It should not be cons
 
 ### Code
 
-2020-05-09 - Mirrored tarball of idlookup-1.2 from Peter Eriksson to `extras/`, required by `examples/cgi-test.cgi` and `examples/nph-test.cgi`
-2020-05-08 - Fixed preprocessing token error in `src/compat.h`, which was preventing compilation.
+- 2020-05-09 - Mirrored tarball of idlookup-1.2 from Peter Eriksson to `extras/`, required by `examples/cgi-test.cgi` and `examples/nph-test.cgi`
+- 2020-05-08 - Fixed preprocessing token error in `src/compat.h`, which was preventing compilation.
 
 ### Integrations
 
