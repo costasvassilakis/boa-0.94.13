@@ -5,6 +5,12 @@
 
 [Boa](http://www.boa.org/) is a simple and lightweight HTTP server which is occasionally still found in embedded firmware images for serving CGI scripts, files, and more. 0.94.13 is the last stable version, and was released [in 2002](https://en.wikipedia.org/wiki/Boa_(web_server)).
 
+## Known Vulnerabilities
+
+### Unfixed
+
+- Failure to set a DefaultType in the boa.conf configuration file will result in requests without a clear MIME type (ex. %F5) causing a segfault in `alias.c` at `if (strcmp(CGI_MIME_TYPE, get_mime_type(buffer)) == 0)`, in which the returned value from `get_mime_type()` is null. This terminates Boa and creates an easy DoS, though this is more of an unfortunate misconfiguration (avoided by using a default config).
+
 ## Changes
 
 This repository contains Boa 0.94.13 with minimal changes. It should not be considered meaningfully enhanced from the original source. However, it does contain some integrations and output from tools to help identify security hotspots and bad practices.
