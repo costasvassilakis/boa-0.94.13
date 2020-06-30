@@ -9,7 +9,8 @@
 
 ### Unfixed
 
-- Failure to set a DefaultType in the boa.conf configuration file will result in requests without a clear MIME type (ex. %F5) causing a segfault in `alias.c` at `if (strcmp(CGI_MIME_TYPE, get_mime_type(buffer)) == 0)`, in which the returned value from `get_mime_type()` is null. This terminates Boa and creates an easy DoS, though this is more of an unfortunate misconfiguration (avoided by using a default config).
+- [CVE-2009-4496](https://www.ush.it/team/ush/hack_httpd_escape/adv.txt) - Discovered by the [ush.it](https://www.ush.it/) team: Boa's error logs in 0.94.13 (and likely earlier) through 0.94.14-rc21 do not sanitize non-printable characters, which may allow a remote attacker to modify a window's title, possibly execute arbitrary commands or overwrite files, etc. via an HTTP request containing an escape sequence for a terminal emulator.
+- Failure to set a DefaultType in the boa.conf configuration file will result in requests without a clear MIME type (ex. %F5) causing a segfault in `alias.c` at `if (strcmp(CGI_MIME_TYPE, get_mime_type(buffer)) == 0)`, in which the returned value from `get_mime_type()` is null. This terminates Boa and creates an easy DoS, though this is more of an unfortunate misconfiguration (avoided by using a default config) than an explicit vulnerability.
 
 ## Changes
 
