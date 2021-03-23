@@ -38,7 +38,7 @@ jobs:
       dist: bionic
       compiler: clang
       script:
-        - VERSION=0.17.0
+        - VERSION=1.0.0
         - curl -sSL "https://github.com/facebook/infer/releases/download/v$VERSION/infer-linux64-v$VERSION.tar.xz" | sudo tar -C /opt -xJ
         - sudo ln -s "/opt/infer-linux64-v$VERSION/bin/infer" /usr/local/bin/infer
         - cd src
